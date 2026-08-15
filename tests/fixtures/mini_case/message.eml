@@ -1,0 +1,9 @@
+From: Alice Smith <alice@example.test>
+To: Robert Williams <robert@example.test>
+Date: Mon, 2 Mar 2026 09:30:00 -0600
+Subject: Payment authorization
+Message-ID: <payment-932@example.test>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Alice Smith did not approve Payment #932 on March 2, 2026.

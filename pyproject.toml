@@ -1,0 +1,116 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "docchrono"
+version = "0.1.0rc1"
+description = "Evidence-linked chronology and graphs from documents"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_LICENSES.md"]
+authors = [{ name = "Naveen" }]
+maintainers = [{ name = "Naveen", email = "naveen.aifanatic@gmail.com" }]
+keywords = [
+  "chronology",
+  "document-analysis",
+  "evidence",
+  "information-extraction",
+  "knowledge-graph",
+  "nlp",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Typing :: Typed",
+]
+dependencies = [
+  "beautifulsoup4>=4.12,<5",
+  "dateparser>=1.2,<2",
+  "networkx>=3.4,<4",
+  "pdfplumber>=0.11,<0.12",
+  "pydantic>=2.10,<3",
+  "python-docx>=1.1,<2",
+  "rapidfuzz>=3.10,<4",
+  "spacy>=3.8,<3.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2,<2",
+  "hypothesis>=6.120,<7",
+  "pip-audit>=2.7,<3",
+  "pyright>=1.1,<2",
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.9,<1",
+  "twine>=6,<7",
+]
+
+[project.scripts]
+docchrono = "docchrono.cli:main"
+
+[project.urls]
+Repository = "https://github.com/docchrono/docchrono"
+Issues = "https://github.com/docchrono/docchrono/issues"
+Changelog = "https://github.com/docchrono/docchrono/releases"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/docchrono"]
+core-metadata-version = "2.4"
+
+[tool.hatch.build.targets.sdist]
+core-metadata-version = "2.4"
+include = [
+  "/src",
+  "/tests",
+  "/docs",
+  "/scripts",
+  "/CHANGELOG.md",
+  "/CONTEXT.md",
+  "/CONTRIBUTING.md",
+  "/LICENSE",
+  "/NOTICE",
+  "/README.md",
+  "/SECURITY.md",
+  "/THIRD_PARTY_LICENSES.md",
+  "/pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["docchrono"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
