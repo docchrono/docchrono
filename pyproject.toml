@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "docchrono"
-version = "0.1.0rc1"
+version = "0.1.0"
 description = "Evidence-linked chronology and graphs from documents"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
